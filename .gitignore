@@ -1,0 +1,16 @@
+*.log
+.cache
+.DS_Store
+.idea
+build
+dist
+node_modules
+.gitkeep
+converage
+yarn-error.log
+npm-debug.log
+.yarnclean
+package-lock.json
+yarn.lock
+.vscode
+
