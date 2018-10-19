@@ -11,7 +11,7 @@ const db = 'mongodb://localhost:27017/test';
 mongoose.Promise = require('bluebird');
 mongoose.connect(
   db,
-  { useMongoClient: true }
+  { useNewUrlParser: true, useCreateIndex: true }
 );
 
 /**
@@ -44,19 +44,13 @@ walk(models_path);
 require('babel-register');
 const Koa = require('koa');
 const logger = require('koa-logger');
-const session = require('koa-session');
 const bodyParser = require('koa-bodyparser');
 const app = new Koa();
 
 app.keys = ['TracyD'];
 app.use(logger());
-app.use(session(app));
 app.use(bodyParser());
 
-/**
- * 使用路由转发请求
- * @type {[type]}
- */
 const router = require('./config/router')();
 
 app.use(router.routes()).use(router.allowedMethods());
